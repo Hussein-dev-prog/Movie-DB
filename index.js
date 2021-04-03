@@ -70,3 +70,21 @@ const movies = [
     { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
 ]
 
+app.get('/movies/read/by-date', (req, res) => {
+    movies.sort((a, b) => { return a.year - b.year })
+    res.send({ status: 200, message: movies })
+
+})
+
+app.get('/movies/read/by-rating', (req, res) => {
+    movies.sort((a, b) => { return b.rating - a.rating })
+    res.send({ status: 200, message: movies })
+
+})
+
+app.get('/movies/read/by-title', (req, res) => {
+    movies.sort((a, b) => { return a.title.localeCompare(b.title); })
+    res.send({ status: 200, message: movies })
+
+})
+
