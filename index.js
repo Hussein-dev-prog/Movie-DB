@@ -87,4 +87,15 @@ app.get('/movies/read/by-title', (req, res) => {
     res.send({ status: 200, message: movies })
 
 })
+app.get('/movies/read/id/:id', (req, res) => {
+    const id = res.params.id;
+    if (id < 0 || id > movies.length) {
+        const err404 = { status: 404, error: true, message: `the movie ${id} does not exist` };
+        res.send({ status: 404, message: err404 })
+
+    } else {
+        res.send({ status: 200, message: movies[a - 1] })
+
+    }
+})
 
